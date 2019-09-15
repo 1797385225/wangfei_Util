@@ -49,13 +49,24 @@ public class StringUtilTest {
 	@Test
 	public void isEmail() {
 		//传一次合法的邮箱，测试通过
-//		boolean email = StringUtil.checkEmail("1797385225@com.qq");
-//		System.out.println(email);
+		boolean email = StringUtil.checkEmail("1797385225@com.qq");
+		System.out.println(email);
 		//传一个非法的邮箱测试不通过
 		boolean email2 = StringUtil.checkEmail("22com.ee");
 		System.out.println(email2);
 	}
-	
-	
+	/**
+	 * //统计一个字符串中相应字符出现的次数
+	 * @Title: isMethod 
+	 * @Description: TODO
+	 * @return: void
+	 */
+	@Test
+	public void isMethod() {
+		String s = "aagfagdlkerjgavpofjmvglk我是你的";
+	    //调用自定义方法来 统计相应字符出现的次数
+	  System.out.print(StringUtil.method(s)); 
+		
+	}
 
 }
