@@ -13,28 +13,44 @@ public class DateUtil {
 	 */
 	public static Date getDateByMonthSub(Date date, Integer month) {
 		Calendar c = Calendar.getInstance();
-		//用传入的日期初始化日历类
+		// 用传入的日期初始化日历类
 		c.setTime(date);
-		//减去对应月份
+		// 减去对应月份
 		c.add(Calendar.MONTH, -month);
 		return c.getTime();
 	}
 
-	// 返回一个在某个时间段的随机日期
+	/**
+	 * 
+	 * @Title: randomDate
+	 * @Description: 随机产生在某个时间段内的日期
+	 * @param minDate
+	 * @param maxDate
+	 * @return
+	 * @return: Date
+	 */
 	public static Date randomDate(Date minDate, Date maxDate) {
-		// 从1970年到minDate的毫米数
+		Calendar c1 = Calendar.getInstance();
+		// 获取开始的时间的毫米数
 		long l1 = minDate.getTime();
-		// 从1970年到maxDate的毫米数
+		// 获取结束时间的毫米数
 		long l2 = maxDate.getTime();
-		Calendar c = Calendar.getInstance();
-		long l3 = (long) (Math.random() * (l2 - l1 + 1) + l1);
-		c.setTimeInMillis(l3);
-		return c.getTime();
+		// 随机产生一个l1和l2之间的随机数据 l3
+		long l3 = (long) ((Math.random() * (l2 - l1 + 1)) + l1);
+		// 用毫秒 初始化日历类
+		c1.setTimeInMillis(l3);
+		return c1.getTime();
+
 	}
 
-	/*
-	 * 方法1：(5分) 返回传入日期的月初 给一个时间对象，返回该时间所在月的1日0时0分0秒。例如一个Date对象的值是2019-05-18 11:37:22
-	 * 则返回的结果为2019-05-01 00:00:00
+	/**
+	 * 
+	 * @Title: getDateByInitMonth
+	 * @Description: 方法1：(5分) 返回传入日期的月初 给一个时间对象，返回该时间所在月的1日0时0分0秒。
+	 *               例如一个Date对象的值是2019-05-18 11:37:22 则返回的结果为2019-05-01 00:00:00
+	 * @param src
+	 * @return
+	 * @return: Date
 	 */
 	public static Date getDateByInitMonth(Date src) {
 		// 获取日历类
@@ -49,10 +65,15 @@ public class DateUtil {
 		return c.getTime();
 	}
 
-	/*
-	 * 方法2：(5分) 给一个时间对象，返回该时间所在月的最后日23时59分59秒，需要考虑月大月小和二月特殊情况。
-	 * 例如一个Date对象的值是2019-05-18 11:37:22，则返回的时间为2019-05-31 23:59:59
-	 * 例如一个Date对象的值是2019-02-05 15:42:18，则返回的时间为2019-02-28 23:59:59
+	/**
+	 * 
+	 * @Title: getDateByFullMonth
+	 * @Description: 方法2：(5分) 给一个时间对象，返回该时间所在月的最后日23时59分59秒， 需要考虑月大月小和二月特殊情况。
+	 *               例如一个Date对象的值是2019-05-18 11:37:22，则返回的时间为2019-05-31 23:59:59
+	 *               例如一个Date对象的值是2019-02-05 15:42:18，则返回的时间为2019-02-28 23:59:59
+	 * @param src
+	 * @return
+	 * @return: Date
 	 */
 	public static Date getDateByFullMonth(Date src) {
 		// 1让插入的月份加1 ,2再让日期变为月初, 3最后 让日期减去一秒
